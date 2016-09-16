@@ -1,0 +1,57 @@
+/**
+ * Sample Sift Stylus
+ */
+
+@import url('https://static.redsift.io/reusable/ui-rs-core/latest/css/ui-rs-core.min.css');
+
+/* Disable selection/Copy of UIWebView to improve navigation */
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body, html {
+  height: 100%;
+}
+
+.side-by-side {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.stat--separator {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  padding: 20px;
+  border-right: 1px solid black;
+}
+
+.count {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.subtitle {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+}
