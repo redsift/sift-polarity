@@ -40,7 +40,7 @@
     "nodes":[{
       "implementation": {
         "python": "server/classify.py",
-        "sandbox": "quay.io/redsift/sandbox-scipy"
+        "sandbox": "quay.io/redsift/sandbox-scipy:v3"
       },
       "input": {
         "bucket": "gmailEmails"

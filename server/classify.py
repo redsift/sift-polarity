@@ -42,23 +42,24 @@ def heuristics(message, debug):
 
     nb = None
     
-#    nb = TextBlob(message, analyzer=NAIVE_BAYES).sentiment
-#    if math.fabs(nb.p_pos - nb.p_neg) > 0.9:
-#        if pt.polarity < 0.0: 
-#            return { "flag": True, "reason": "polar-1" }
+    nb = TextBlob(message, analyzer=NAIVE_BAYES).sentiment
+    if math.fabs(nb.p_pos - nb.p_neg) > 0.9:
+        if pt.polarity < 0.0: 
+            return { "flag": True, "reason": "polar-1" }
 
-#        if pt.subjectivity > 0.4:
-#            return { "flag": False, "reason": "objective-2", "pt": pt, "nb": nb } if debug else None
+        if pt.subjectivity > 0.4:
+            return { "flag": False, "reason": "objective-2", "pt": pt, "nb": nb } if debug else None
 
-#        if pt.polarity < 0.2: 
-#            return { "flag": True, "reason": "polar-2" }
+        if pt.polarity < 0.2: 
+            return { "flag": True, "reason": "polar-2" }
     
     return { "flag": False, "reason": "fallthrough", "pt": pt, "nb": nb } if debug else None
 
 def classify(id, jmap, debug):
-    o = json.loads(jmap)
+    str = jmap.decode('utf-8')
+    o = json.loads(str)
     message = None
-
+    # print(str.encode("ascii", "replace"))
     if 'textBody' in o:
         message = extract(o['textBody'])
     elif 'strippedHtmlBody' in o:
@@ -69,15 +70,17 @@ def classify(id, jmap, debug):
     result = heuristics(message, debug)
     if result:
         if debug:
-            print "--------------------------------------------------------------------------"
-            print message
+            print("--------------------------------------------------------------------------")
+            print(message.encode("ascii", "replace"))
         # return dict(name='statistics', key=id, value=result)
+        print("--------------------------------------------------------------------------")
+        print(result['reason'])
 
         augment = dict(list=result, detail=result)
-        return dict(name='threads', key=tid, value=augment)
+        return dict(name='threads', key=o['threadId'], value=augment)
 
     return None
     
 
 def compute(req):
-    return filter(lambda x: x != None, [ classify(d['key'], d['value'], False) for d in req['in']['data'] ])
+    return list(filter(lambda x: x != None, [ classify(d['key'], d['value'], False) for d in req['in']['data'] ]))
