@@ -25,13 +25,13 @@
           "filter":{
             "conditions":[{
               "date": "between now and 1 month before now"
-            }],
-            "wants": [
-              "archive",
-              "textBody",
-              "strippedHtmlBody"
-            ]
-          }
+            }]
+          },
+          "wants": [
+            "archive",
+            "textBody",
+            "strippedHtmlBody"
+          ]
         }
       }
     },
