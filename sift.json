@@ -1,10 +1,23 @@
 {
   "name": "sift-polarity",
-  "display-name": "Sift Polarity",
-  "description": "",
-  "author": "",
+  "display-name": "Polarity Sift",
+  "subtitle": "Never miss the important threads",
+  "description": "Flag email threads that express highly polar sentiment.",
+  "author": "Rahul Powar",
   "version": "1.0.0",
-  "icon": "https://static.redsift.io/assets/sifts/template/blueprint.svg",
+  "icon": "assets/icon.svg",
+  "marketing": {
+    "screenshots": [
+      "assets/screenshot-0.png"
+    ],
+    "links": [
+      {
+        "label": "Github",
+        "type": "github",
+        "url": "https://github.com/redsift/sift-polarity"
+      }
+    ]
+  },  
   "interfaces": {
     "email": {
       "thread" : {
@@ -44,7 +57,6 @@
         "bucket": "gmailEmails"
       },
       "outputs": {
-        "count": {},
         "threads": {}
       }
     }],
@@ -53,9 +65,6 @@
     },
     "outputs":{
       "exports":{
-        "count" : {
-          "key$schema":"string"
-        },
         "threads": {
           "import": "_email.tid"
         }

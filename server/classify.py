@@ -49,17 +49,14 @@ def heuristics(message, debug):
 
         if pt.subjectivity > 0.4:
             return { "flag": False, "reason": "objective-2", "pt": pt, "nb": nb } if debug else None
-
-        if pt.polarity < 0.2: 
-            return { "flag": True, "reason": "polar-2" }
-    
+ 
     return { "flag": False, "reason": "fallthrough", "pt": pt, "nb": nb } if debug else None
 
 def classify(id, jmap, debug):
     str = jmap.decode('utf-8')
     o = json.loads(str)
     message = None
-    # print(str.encode("ascii", "replace"))
+
     if 'textBody' in o:
         message = extract(o['textBody'])
     elif 'strippedHtmlBody' in o:
@@ -72,9 +69,6 @@ def classify(id, jmap, debug):
         if debug:
             print("--------------------------------------------------------------------------")
             print(message.encode("ascii", "replace"))
-        # return dict(name='statistics', key=id, value=result)
-        print("--------------------------------------------------------------------------")
-        print(result['reason'])
 
         augment = dict(list=result, detail=result)
         return dict(name='threads', key=o['threadId'], value=augment)

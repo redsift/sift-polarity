@@ -4,13 +4,6 @@
 
 @import url('https://static.redsift.io/reusable/ui-rs-core/latest/css/ui-rs-core.min.css');
 
-/* Disable selection/Copy of UIWebView to improve navigation */
-* {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 body, html {
   height: 100%;
 }
@@ -30,28 +23,15 @@ body, html {
   flex-direction: column;
   align-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-.stat--separator {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  padding: 20px;
-  border-right: 1px solid black;
+#icon img {
+  width: 80px;
+  height: 80px;
+  
 }
 
-.count {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 40px;
-}
-
-.subtitle {
-  font-family: 'Source Code Pro';
-  font-style: normal;
-  font-weight: 300;
-  font-size: 14px;
+#subtitle {
+  padding-top: 1em;
+  text-align: center;
 }

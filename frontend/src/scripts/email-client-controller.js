@@ -2,22 +2,22 @@
  * Sift Polarity. Email client controller entry point.
  */
 import { EmailClientController, registerEmailClientController } from '@redsift/sift-sdk-web';
+import { mapReason } from './common.js';
 
 export default class MyEmailClientController extends EmailClientController {
   constructor() {
     super();
   }
 
-  // TODO: link to docs
   loadThreadListView (listInfo) {
-    console.log('sift-polarity: loadThreadListView: ', listInfo);
     if (listInfo) {
       return {
-        template: '001_list_common_txt',
+        template: '003_list_common_img',
         value: {
-          color: '#ffffff',
-          backgroundColor: '#e11010',
-          subtitle: 'BOO'
+          image: {
+            url: "assets/square_p.png"
+          },
+          subtitle: mapReason(listInfo.reason)
         }
       };
     }
