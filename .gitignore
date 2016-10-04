@@ -5,7 +5,7 @@ server/tests
 email_creds.json
 bots_creds.json
 slack_creds.json
-frontend/public/dist
+
 .DS_Store
 
 server/site-packages/
